@@ -8,11 +8,11 @@ trigger:
 
 strategy:
   matrix:
-    linux:
+    abhi:
       imageName: "ubuntu-latest"
-    mac:
+    raj:
       imageName: "macOS-latest"
-    windows:
+    yadav:
       imageName: "windows-latest"
   maxParallel: 3
 
