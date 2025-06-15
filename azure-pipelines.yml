@@ -29,5 +29,5 @@ stages:
       - script: |
           echo "testb"
   pool:
-    vmImage: 'ubuntu-latest'
+    vmImage: 'windows-latest'
   
