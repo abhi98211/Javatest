@@ -1,29 +1,31 @@
 trigger:
 - main
 
-variables:
- test: 'Raj'
+
 
 stages:
 - stage: Build
   displayName: Build
+  pool :
+   vmImage: 'ubuntu-latest'
+  variables: 
+    test: Raj
   jobs:
     - job: new
       steps:
       - script: |
          echo "Abhi-$(test)"
-  pool:
-    vmImage: 'ubuntu-latest'
 - stage: Test
   displayName: test
   dependsOn: Build
   isSkippable: false
-  
+  variables:
+    test: AAABBH
   jobs:
     - job: tee
       steps:
       - script: |
-          echo "Test"
+          echo "$(test)"
     - job: job 
       steps:
       - script: |
