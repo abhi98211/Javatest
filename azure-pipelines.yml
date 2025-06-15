@@ -14,7 +14,7 @@ stages:
     - job: new
       steps:
       - script: |
-         echo "Abhi-$(test)"
+         echo "Abhi-$(test)-$(dbname)"
 - stage: Test
   displayName: test
   dependsOn: Build
