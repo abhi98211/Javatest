@@ -15,3 +15,17 @@ stages:
       steps:
       - script: |
          echo "Abhi-$(test)"
+- stage: Test
+  displayName: test
+  dependsOn: Build
+  isSkippable: false
+  jobs:
+    - job: tee
+      steps:
+      - script: |
+          echo "Test"
+    - job: job 
+      steps:
+      - script: |
+          echo "testb"
+  
