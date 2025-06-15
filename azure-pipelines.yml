@@ -4,9 +4,6 @@ trigger:
 variables:
  test: 'Raj'
 
-pool:
- vmImage: 'ubuntu-latest'
-
 stages:
 - stage: Build
   displayName: Build
@@ -15,10 +12,13 @@ stages:
       steps:
       - script: |
          echo "Abhi-$(test)"
+  pool:
+    vmImage: 'ubuntu-latest'
 - stage: Test
   displayName: test
   dependsOn: Build
   isSkippable: false
+  
   jobs:
     - job: tee
       steps:
@@ -28,4 +28,6 @@ stages:
       steps:
       - script: |
           echo "testb"
+  pool:
+    vmImage: 'ubuntu-latest'
   
