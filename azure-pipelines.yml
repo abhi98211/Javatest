@@ -8,12 +8,24 @@ trigger:
 
 strategy:
   matrix:
-    abhi:
+    abhij:
       imageName: "ubuntu-latest"
-    raj:
+      jdkVersion: "1.10"
+    rajj:
       imageName: "macOS-latest"
-    yadav:
+      jdkVersion: "1.10"
+    yadavj:
       imageName: "windows-latest"
+      jdkVersion: "1.10"
+    abhijj:
+      imageName: "ubuntu-latest"
+      jdkVersion: "1.10"
+    rajjh:
+      imageName: "macOS-latest"
+      jdkVersion: "1.10"
+    yadavjy:
+      imageName: "windows-latest"
+      jdkVersion: "1.10"
   maxParallel: 3
 
 pool:
@@ -24,7 +36,7 @@ steps:
   inputs:
     mavenPomFile: 'pom.xml'
     mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
+    javaHomeOption: '$(jdkVersion)'
     jdkVersionOption: '1.11'
     jdkArchitectureOption: 'x64'
     publishJUnitResults: true
