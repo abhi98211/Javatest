@@ -1,44 +1,17 @@
-# Maven
-# Build your Java project and run tests with Apache Maven.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/java
-
 trigger:
 - main
 
-strategy:
-  matrix:
-    abhij:
-      imageName: "ubuntu-latest"
-      jdkVersion: "1.10"
-    rajj:
-      imageName: "macOS-latest"
-      jdkVersion: "1.10"
-    yadavj:
-      imageName: "windows-latest"
-      jdkVersion: "1.10"
-    abhijj:
-      imageName: "ubuntu-latest"
-      jdkVersion: "1.10"
-    rajjh:
-      imageName: "macOS-latest"
-      jdkVersion: "1.10"
-    yadavjy:
-      imageName: "windows-latest"
-      jdkVersion: "1.10"
-  maxParallel: 3
+variables:
+ test: 'Raj'
 
 pool:
-  vmImage: $(imageName)
+ vmImage: 'ubantu-latest'
 
-steps:
-- task: Maven@3
-  inputs:
-    mavenPomFile: 'pom.xml'
-    mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '$(jdkVersion)'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: true
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'package'
+stages:
+- stage: Build
+  displayName: Build
+  jobs:
+    - job: new
+      steps:
+      - script: |
+         echo "Abhi-$(test)"
