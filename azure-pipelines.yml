@@ -1,7 +1,7 @@
 trigger:
 - main
 
-
+name: MyPipeline
 
 stages:
 - stage: Build
