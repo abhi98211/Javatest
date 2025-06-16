@@ -4,17 +4,19 @@ trigger:
 name: MyPipeline
 
 stages:
+
 - stage: Build
   displayName: Build
-  pool :
-   vmImage: 'ubuntu-latest'
+  pool:
+    vmImage: 'ubuntu-latest'
   variables: 
     test: Raj
   jobs:
     - job: new
       steps:
-      - script: |
-         echo "Abhi-$(test)-$(dbname)"
+        - script: |
+            echo "Abhi-$(test)-$(dbname)"
+
 - stage: Test
   displayName: test
   dependsOn: Build
@@ -22,14 +24,15 @@ stages:
   variables:
     test: AAABBH
   jobs:
-    - job: tee
-      steps:
-      - script: |
-          echo "$(test)"
-    - job: job 
-      steps:
-      - script: |
-          echo "testb"
+    - deployment: testDeployment
+      environment: test-approval-env
+      strategy:
+        runOnce:
+          deploy:
+            steps:
+              - script: |
+                  echo "$(test)"
+              - script: |
+                  echo "testb"
   pool:
     vmImage: 'windows-latest'
-  
